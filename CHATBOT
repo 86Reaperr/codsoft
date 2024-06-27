@@ -1,0 +1,31 @@
+import random
+
+def chat(userInput):
+    userInput = userInput.lower()
+    responses = {
+        "greetings": ["Hey!", "Hi!", "WhatsUp?", "Hello!"],
+        "wellbeing": ["Doing well!", "Great, thanks!", "Just an AI here."],
+        "identity": ["Assistant here.", "AI.", "I'm Chatbot."],
+        "farewell": ["Goodbye!", "See ya!", "Bye!"],
+        "unknown": ["Unclear.", "Clarify?", "Need more info."]
+    }
+
+    if "hello" in userInput or "hi" in userInput:
+        return random.choice(responses["greetings"])
+    elif "how are you" in userInput or "how's it going" in userInput:
+        return random.choice(responses["wellbeing"])
+    elif "what is your name" in userInput or "who are you" in userInput:
+        return random.choice(responses["identity"])
+    elif "bye" in userInput or "goodbye" in userInput:
+        return random.choice(responses["farewell"])
+    else:
+        return random.choice(responses["unknown"])
+
+if __name__ == "__main__":
+    print("AI: Hi! Chat with me. Type 'bye' to end.")
+    while True:
+        userInput = input("You: ")
+        response = chat(userInput)
+        print("AI: " + response)
+        if userInput.lower() in ["bye", "goodbye"]:
+            break
